@@ -30,6 +30,7 @@ from sensor_msgs.msg import Image
 
 from coral_usb.cfg import EdgeTPUObjectDetectorConfig
 
+import tflite_runtime.interpreter as tflite
 
 class EdgeTPUObjectDetector(ConnectionBasedTransport):
 
@@ -42,13 +43,16 @@ class EdgeTPUObjectDetector(ConnectionBasedTransport):
             '~classifier_name', rospy.get_name())
         model_file = os.path.join(
             pkg_path,
-            './models/mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite')
+            './models/starfish.tflite')
         model_file = rospy.get_param('~model_file', model_file)
         label_file = rospy.get_param(
-            '~label_file', os.path.join(pkg_path, './models/coco_labels.txt'))
+            '~label_file', os.path.join(pkg_path, './models/starfish.txt'))
 
         self.engine = DetectionEngine(model_file)
         self.label_ids, self.label_names = self._load_labels(label_file)
+        print(model_file)
+        print(label_file)
+        print(self.label_names)
 
         # dynamic reconfigure
         self.srv = Server(EdgeTPUObjectDetectorConfig, self.config_callback)

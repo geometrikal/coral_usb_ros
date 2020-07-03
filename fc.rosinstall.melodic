@@ -12,3 +12,8 @@
     local-name: dynamic_reconfigure
     uri: https://github.com/ros/dynamic_reconfigure.git
     version: 1.6.3
+- git:
+    local-name: video_stream_opencv
+    uri: https://github.com/ros-drivers/video_stream_opencv
+
+

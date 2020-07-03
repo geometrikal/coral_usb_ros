@@ -13,6 +13,7 @@ generate_dynamic_reconfigure_options(
   cfg/EdgeTPUObjectDetector.cfg
   cfg/EdgeTPUFaceDetector.cfg
   cfg/EdgeTPUHumanPoseEstimator.cfg
+  cfg/EdgeTPUPatchClassifier.cfg
 )
 
 catkin_package()
